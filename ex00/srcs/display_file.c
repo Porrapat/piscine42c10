@@ -26,11 +26,13 @@ bool	display_file(char *path)
 	file_descriptor = open(path, O_RDONLY);
 	if (file_descriptor < 0)
 		return (false);
-	while ((byte_read = read(file_descriptor, buffer, BUFFER_SIZE)) > 0)
+	byte_read = read(file_descriptor, buffer, BUFFER_SIZE);
+	while (byte_read > 0)
 	{
 		if (byte_read == (unsigned int)-1)
 			return (false);
 		write(1, &buffer[0], byte_read);
+		byte_read = read(file_descriptor, buffer, BUFFER_SIZE);
 	}
 	close(file_descriptor);
 	return (true);

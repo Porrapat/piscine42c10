@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
 #include <stdbool.h>
 
 #include "display_file.h"
@@ -32,7 +30,13 @@ bool	parse_arguments(int argc, char **argv)
 	return (false);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	return (parse_arguments(argc, argv) ? 0 : 1);
+	bool	result;
+
+	result = parse_arguments(argc, argv);
+	if (result)
+		return (0);
+	else
+		return (1);
 }
