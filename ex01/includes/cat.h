@@ -20,7 +20,7 @@
 # define ERR 2
 # define BUFFER_SIZE 1024
 
-void	stdin_loop();
+void	stdin_loop(void);
 
 bool	cat(char **paths, int count, int offset);
 

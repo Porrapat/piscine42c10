@@ -38,7 +38,8 @@ void	do_cat(char *executable, char *path, int file_descriptor)
 	unsigned int	byte_read;
 	char			buffer[BUFFER_SIZE];
 
-	while ((byte_read = read(file_descriptor, buffer, BUFFER_SIZE)) > 0)
+	byte_read = read(file_descriptor, buffer, BUFFER_SIZE);
+	while (byte_read > 0)
 	{
 		if (errno != 0)
 		{
@@ -46,6 +47,7 @@ void	do_cat(char *executable, char *path, int file_descriptor)
 			break ;
 		}
 		write(OUT, &buffer[0], byte_read);
+		byte_read = read(file_descriptor, buffer, BUFFER_SIZE);
 	}
 	if (file_descriptor > 2)
 		close(file_descriptor);
