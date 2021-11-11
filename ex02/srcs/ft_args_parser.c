@@ -17,10 +17,6 @@
 #include "ft_args_parser.h"
 #include "ft_tail.h"
 
-#define EXEC args[0]
-#define DERROR display_error
-#define DERR_A_USG(e, er, c, l) DERROR(e, er, c, l); display_usage(EXEC)
-
 #define ERR_ILLEGAL_OPT "illegal option"
 #define ERR_ILLEGAL_OFF "illegal offset"
 #define ERR_OPT_REQ_ARG "option requires an argument"
@@ -43,7 +39,8 @@ bool	parse_args(char **args, int count)
 			}
 			else
 			{
-				DERR_A_USG(EXEC, ERR_ILLEGAL_OPT, (args[index] + 1), true);
+				display_error(args[0], ERR_ILLEGAL_OPT, (args[index] + 1), true);
+				display_usage(args[0]);
 				return (false);
 			}
 		}
@@ -66,7 +63,7 @@ bool	process_tail(char **args, int count, int index, t_options *opts)
 	else
 		while (index < count)
 		{
-			if (!tail(EXEC, args[index], opts, total))
+			if (!tail(args[0], args[index], opts, total))
 				result = false;
 			index++;
 		}
@@ -88,14 +85,14 @@ bool	proc_option(char **args, int count, int *index, t_options *opts)
 				opts->byte_to_read = atoi;
 				return (true);
 			}
-			DERROR(EXEC, ERR_ILLEGAL_OFF, args[*index], false);
+			display_error(args[0], ERR_ILLEGAL_OFF, args[*index], false);
 			return (false);
 		}
-		display_usage(EXEC);
+		display_usage(args[0]);
 		return (false);
 	}
-	DERROR(EXEC, ERR_OPT_REQ_ARG, (char *)(args[*index] + 1), true);
-	display_usage(EXEC);
+	display_error(args[0], ERR_OPT_REQ_ARG, (char *)(args[*index] + 1), true);
+	display_usage(args[0]);
 	return (false);
 }
 

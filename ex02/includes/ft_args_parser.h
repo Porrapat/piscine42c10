@@ -17,7 +17,7 @@
 
 # define NOTHING -1
 
-typedef struct	s_options
+typedef struct s_options
 {
 	int	byte_to_read;
 }				t_options;
