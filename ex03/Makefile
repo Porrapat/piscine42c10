@@ -3,12 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ecaceres <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ppetchda <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/08/13 15:11:33 by ecaceres          #+#    #+#              #
-#    Updated: 2019/08/13 15:11:34 by ecaceres         ###   ########.fr        #
+#    Created: 2021/11/09 23:52:59 by porrapat          #+#    #+#              #
+#    Updated: 2021/11/09 23:53:55 by porrapat         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#  **************************************************************************  #
 
 C_YELLOW_B=\033[1;33m
 C_LIGHT_RED_B=\033[0;91m
@@ -39,7 +39,7 @@ fclean : clean
 
 norm :
 	norminette -R CheckForbiddenSourceHeader */*.[ch]
-	
+
 test : re
 	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Single file: ./Makefile$(C_RESET)" ;
 	@hexdump ./Makefile | cat -e > result-off.txt ;

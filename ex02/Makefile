@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ecaceres <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ppetchda <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/08/13 15:11:33 by ecaceres          #+#    #+#              #
-#    Updated: 2019/08/13 15:11:34 by ecaceres         ###   ########.fr        #
+#    Created: 2021/11/09 23:52:59 by porrapat          #+#    #+#              #
+#    Updated: 2021/11/09 23:53:55 by porrapat         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#  **************************************************************************  #
 
 C_YELLOW_B=\033[1;33m
 C_LIGHT_RED_B=\033[0;91m
 C_WHITE=\033[0;97m
 C_RESET=\033[0;39m
 
-SRCS	= ./srcs/ft_abs.c ./srcs/ft_args_parser.c ./srcs/ft_atoi.c ./srcs/ft_console_io.c ./srcs/ft_is.c ./srcs/ft_strncpy.c ./srcs/ft_tail.c ./srcs/ft_tail_out.c ./srcs/ft_tail_utils.c ./srcs/main.c 
+SRCS	= ./srcs/ft_abs.c ./srcs/ft_args_parser.c ./srcs/ft_atoi.c ./srcs/ft_console_io.c ./srcs/ft_is.c ./srcs/ft_strncpy.c ./srcs/ft_tail.c ./srcs/ft_tail_out.c ./srcs/ft_tail_utils.c ./srcs/main.c
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
 NAME	= ft_tail
