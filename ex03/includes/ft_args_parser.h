@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 
-typedef struct	s_options
+typedef struct s_options
 {
 	char	*executable;
 	char	**paths;

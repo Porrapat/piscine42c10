@@ -43,7 +43,6 @@ void	tail_by_lines(int fd)
 	unsigned long	index;
 	int				line_count;
 	char			*content;
-	unsigned int	last_index;
 
 	content = read_full(fd, &byte_read);
 	line_count = count_line(byte_read, content);
@@ -61,7 +60,6 @@ void	tail_by_lines(int fd)
 				}
 				break ;
 			}
-			last_index = index + 1;
 		}
 	}
 }
