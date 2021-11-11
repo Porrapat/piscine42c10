@@ -23,9 +23,6 @@
 #include "ft_args_parser.h"
 #include "ft_strncpy.h"
 
-#define IS_STD(fd) (fd >= 0 && fd <= 2)
-#define HAS_ERR (errno != 0)
-
 int	ft_open_file(t_options *options)
 {
 	return (open(options->curr_path, O_RDONLY));
@@ -65,12 +62,11 @@ char	*ft_read_multiple(t_options *opts, int count, UINT *len, int total)
 	{
 		opts->curr_path = opts->paths[index];
 		fd = ft_open_file(opts);
-		ok_read += errno == 0 ? 1 : 0;
-		if (errno != 0)
-			ft_show_error(opts);
+		if (errno == 0)
+			ok_read += 1;
 		old_length = *len;
 		dest = ft_extend_array(dest, ft_read_full(fd, len), old_length, len);
-		if ((index == total - 1 && HAS_ERR && ok_read == 0) || errno == EISDIR)
+		if ((index == total - 1 && ok_read == 0) || errno == EISDIR)
 			ft_show_error(opts);
 		index++;
 		ft_close_file(fd);
@@ -83,23 +79,25 @@ char	*ft_read_full(int fd, unsigned int *length)
 {
 	unsigned int	total_read;
 	unsigned int	byte_read;
-	char			buffer[BUFFER_SIZE_1K];
+	char			*buffer;
 	char			*old;
 	char			*dest;
 
 	total_read = 0;
 	dest = malloc(0);
-	while ((byte_read = read(fd, buffer, BUFFER_SIZE_1K)) != 0)
+	buffer = (char *)malloc(BUFFER_SIZE_1K);
+	byte_read = read(fd, buffer, BUFFER_SIZE_1K);
+	while (byte_read != 0)
 	{
-		if (errno != 0)
-			return (dest);
 		old = dest;
-		if (!(dest = malloc((total_read + byte_read) * sizeof(char *))))
+		dest = malloc((total_read + byte_read) * sizeof(char *));
+		if (!dest)
 			return (0);
 		ft_strncpy(dest, old, total_read);
 		ft_strncpy(dest + total_read, buffer, byte_read);
 		total_read += byte_read;
 		free(old);
+		byte_read = read(fd, buffer, BUFFER_SIZE_1K);
 	}
 	*length += total_read;
 	return (dest);
