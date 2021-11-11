@@ -17,7 +17,6 @@
 
 # define BUFFER_SIZE_1K 1024
 # define UINT unsigned int
-# define T_OPT t_options
 
 int		ft_open_file(t_options *options);
 
@@ -25,7 +24,7 @@ int		ft_close_file(int fd);
 
 bool	ft_show_error(t_options *options);
 
-char	*ft_read_multiple(T_OPT *opts, int count, UINT *len, int total);
+char	*ft_read_multiple(t_options *opts, int count, UINT *len, int total);
 
 char	*ft_read_full(int fd, unsigned int *length);
 
