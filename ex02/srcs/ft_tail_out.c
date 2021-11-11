@@ -21,7 +21,7 @@
 #include "ft_tail_utils.h"
 #include "ft_console_io.h"
 
-int		count_line(unsigned long byte_read, char *content)
+int	count_line(unsigned long byte_read, char *content)
 {
 	unsigned long	index;
 	int				line_count;

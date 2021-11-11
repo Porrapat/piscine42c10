@@ -15,7 +15,7 @@
 #include "ft_tail.h"
 #include "ft_args_parser.h"
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (!parse_args(argv, argc))
 		return (1);

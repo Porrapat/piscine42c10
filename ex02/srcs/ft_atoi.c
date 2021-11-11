@@ -20,7 +20,7 @@ bool	ft_is_operator(char c)
 	return (ft_is_in_string(c, "+-"));
 }
 
-int		ft_abs_strict_atoi(char *str)
+int	ft_abs_strict_atoi(char *str)
 {
 	int	result;
 

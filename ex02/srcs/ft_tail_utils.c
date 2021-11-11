@@ -25,7 +25,7 @@
 
 #define IS_STD(fd) (fd >= 0 && fd <= 2)
 
-int		open_file(char *executable, char *path)
+int	open_file(char *executable, char *path)
 {
 	int		fd;
 
@@ -35,9 +35,9 @@ int		open_file(char *executable, char *path)
 	return (fd);
 }
 
-int		close_file(char *executable, char *path, int fd)
+int	close_file(char *executable, char *path, int fd)
 {
-	int		result;
+	int	result;
 
 	result = close(fd);
 	if (result < 0)
@@ -67,17 +67,20 @@ char	*read_full(int fd, unsigned long *total_read)
 
 	*total_read = 0;
 	dest = malloc(0);
-	while ((byte_read = read(fd, buffer, DEFAULT_BUFFER_SIZE)) != 0)
+	byte_read = read(fd, buffer, DEFAULT_BUFFER_SIZE);
+	while (byte_read != 0)
 	{
 		if (errno != 0)
 			return (dest);
 		old = dest;
-		if (!(dest = malloc((*total_read + byte_read) * sizeof(char))))
+		dest = malloc((*total_read + byte_read) * sizeof(char));
+		if (!dest)
 			return (0);
 		ft_str_sized_copy(dest, old, *total_read);
 		ft_str_sized_copy(dest + *total_read, buffer, byte_read);
 		*total_read += byte_read;
 		free(old);
+		byte_read = read(fd, buffer, DEFAULT_BUFFER_SIZE);
 	}
 	return (dest);
 }
