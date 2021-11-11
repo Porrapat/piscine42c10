@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dumper.h                                        :+:      :+:    :+:   */
+/*   ft_dumper_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppetchda <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DUMPER_H
-# define FT_DUMPER_H
+#include <stdbool.h>
+#include "ft_dumper.h"
 
-# include "ft_args_parser.h"
+int	is_not_star_flag(bool star_flag)
+{
+	int	to_return;
 
-# define UINT unsigned int
+	if (!star_flag)
+		to_return = 2;
+	else
+		to_return = 0;
+	return (to_return);
+}
 
-int		is_not_star_flag(bool star_flag);
-int		get_max_from_i_lines_length(UINT i, UINT lines, UINT length);
-void	ft_dump(t_options *options, char *content, UINT length, UINT lines);
+int	get_max_from_i_lines_length(UINT i, UINT lines, UINT length)
+{
+	int	result;
 
-#endif
+	if (i == lines - 1)
+		result = length % 16;
+	else
+		result = 16;
+	return (result);
+}

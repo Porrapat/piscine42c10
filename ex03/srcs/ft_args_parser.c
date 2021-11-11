@@ -19,9 +19,7 @@
 
 #define ERR_ILLG_OPT "illegal option"
 
-#define HAS_MORE (index + 1 < count)
-
-int		count_same_letter(t_options *options, char letter, char *str)
+int	count_same_letter(t_options *options, char letter, char *str)
 {
 	int		count;
 	int		index;

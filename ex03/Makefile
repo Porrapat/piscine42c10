@@ -15,7 +15,7 @@ C_LIGHT_RED_B=\033[0;91m
 C_WHITE=\033[0;97m
 C_RESET=\033[0;39m
 
-SRCS	= ./srcs/ft_args_parser.c ./srcs/ft_console_io.c ./srcs/ft_dumper.c ./srcs/ft_equal_buffer.c ./srcs/ft_file_utils.c ./srcs/ft_file_utils2.c ./srcs/ft_hexdump.c ./srcs/ft_strncpy.c ./srcs/ft_write_number.c ./srcs/main.c
+SRCS	= ./srcs/ft_args_parser.c ./srcs/ft_console_io.c ./srcs/ft_dumper_util.c ./srcs/ft_dumper.c ./srcs/ft_equal_buffer.c ./srcs/ft_file_utils.c ./srcs/ft_file_utils2.c ./srcs/ft_hexdump.c ./srcs/ft_strncpy.c ./srcs/ft_write_number.c ./srcs/main.c
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
 NAME	= ft_hexdump

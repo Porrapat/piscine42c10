@@ -61,11 +61,13 @@ void	ft_repeat_line(t_options *options, char *content, UINT line, int max)
 	if (options->disp_cont < 2)
 		ft_dump_line(options, content, line, max);
 	else
+	{
 		while (index < options->disp_cont)
 		{
 			ft_dump_line(options, content, line, max);
 			index++;
 		}
+	}
 }
 
 void	ft_do_dump(t_options *options, char *content, UINT length, UINT lines)
@@ -80,10 +82,10 @@ void	ft_do_dump(t_options *options, char *content, UINT length, UINT lines)
 	star_flag = false;
 	while (++i < lines)
 	{
-		max = (i == lines - 1) ? length % 16 : 16;
+		max = get_max_from_i_lines_length(i, lines, length);
 		if (last_line != 0 && ft_is_equal(content + (i * 16), last_line, 16))
 		{
-			write(OUT, "*\n", !star_flag ? 2 : 0);
+			write(OUT, "*\n", is_not_star_flag(star_flag));
 			star_flag = true;
 		}
 		else
