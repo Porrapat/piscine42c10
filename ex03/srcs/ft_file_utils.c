@@ -26,12 +26,12 @@
 #define IS_STD(fd) (fd >= 0 && fd <= 2)
 #define HAS_ERR (errno != 0)
 
-int		ft_open_file(t_options *options)
+int	ft_open_file(t_options *options)
 {
 	return (open(options->curr_path, O_RDONLY));
 }
 
-int		ft_close_file(int fd)
+int	ft_close_file(int fd)
 {
 	return (close(fd));
 }

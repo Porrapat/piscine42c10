@@ -17,9 +17,10 @@
 
 char	*ft_extend_array(char *orig, char *n_cont, UINT old_len, UINT *len)
 {
-	char *dest;
+	char	*dest;
 
-	if (!(dest = malloc((*len + 1) * sizeof(char))))
+	dest = malloc((*len + 1) * sizeof(char));
+	if (!dest)
 		return (NULL);
 	if (orig != NULL)
 		ft_strncpy(dest, orig, old_len);
