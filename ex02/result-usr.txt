@@ -1,0 +1,7 @@
+==> ./srcs/ft_abs.c <==
+(unsigned int)number);
+}
+
+==> ./srcs/ft_abs.c <==
+(unsigned int)number);
+}

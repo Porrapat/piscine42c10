@@ -23,8 +23,6 @@
 #include "ft_console_io.h"
 #include "ft_strncpy.h"
 
-#define IS_STD(fd) (fd >= 0 && fd <= 2)
-
 int	open_file(char *executable, char *path)
 {
 	int		fd;

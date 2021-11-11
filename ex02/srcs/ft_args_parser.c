@@ -38,11 +38,7 @@ bool	parse_args(char **args, int count)
 					return (false);
 			}
 			else
-			{
-				display_error(args[0], ERR_ILLEGAL_OPT, (args[index] + 1), true);
-				display_usage(args[0]);
 				return (false);
-			}
 		}
 		else
 			break ;
@@ -61,12 +57,14 @@ bool	process_tail(char **args, int count, int index, t_options *opts)
 	if (total == 0)
 		stdin_tail(opts);
 	else
+	{
 		while (index < count)
 		{
 			if (!tail(args[0], args[index], opts, total))
 				result = false;
 			index++;
 		}
+	}
 	return (result);
 }
 
