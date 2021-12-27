@@ -23,8 +23,8 @@ CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
-.c.o :
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o $@ -I${INCS}
 
 ${NAME} : ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
